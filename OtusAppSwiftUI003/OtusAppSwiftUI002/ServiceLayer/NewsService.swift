@@ -6,15 +6,15 @@
 //
 
 import Foundation
-import Networking
+import Core
 
-public protocol NewsServiceProtocol {
+protocol NewsServiceProtocol {
     func getNews(section: NewsSections, completion: @escaping (Result<[Article], Error>) -> Void)
 }
 
-final public class NewsService: NewsServiceProtocol {
+final class NewsService: NewsServiceProtocol {
     
-    public func getNews(section: NewsSections, completion: @escaping (Result<[Article], Error>) -> Void) {
+    func getNews(section: NewsSections, completion: @escaping (Result<[Article], Error>) -> Void) {
         let sectionQuery = returnQuery(section: section)
         ArticlesAPI.everythingGet(q: sectionQuery,
                                   from: "2023-02-29",
@@ -31,7 +31,7 @@ final public class NewsService: NewsServiceProtocol {
         }
     }
     
-    public func returnQuery(section: NewsSections) -> String {
+    func returnQuery(section: NewsSections) -> String {
         switch section {
         case .world:
             return "World"

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum NewsSections {
+enum NewsSections {
     case world
     case israel
     case russia

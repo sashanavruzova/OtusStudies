@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import Networking
+import Core
 
 class FavoritesViewModel: ObservableObject {
     @Published var favoritesArticles = [Article]()

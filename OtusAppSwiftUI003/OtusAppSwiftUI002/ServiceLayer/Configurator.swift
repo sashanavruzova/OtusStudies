@@ -7,17 +7,17 @@
 
 import Foundation
 
-public class Configurator {
-    public static let shared = Configurator()
+class Configurator {
+    static let shared = Configurator()
     
     private init() {}
     
-    public func setup() {
+    func setup() {
         setUpNewsService()
     }
     
     private func setUpNewsService() {
         let newsService: NewsServiceProtocol = NewsService()
-        ServiceLocator.shared.addService(service: newsService)
+        ServiceLocator.shared.register(service: newsService)
     }
 }

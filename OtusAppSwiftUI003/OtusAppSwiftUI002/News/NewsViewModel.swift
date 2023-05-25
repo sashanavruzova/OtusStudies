@@ -6,10 +6,9 @@
 //
 
 import Foundation
-import Networking
 import Core
 
-final public class NewsViewModel: ObservableObject {
+final class NewsViewModel: ObservableObject {
     @Published var articles: [Article] = .init()
     @Injected var service: NewsServiceProtocol?
     

@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		395111DC2A1FD657007363CA /* UIDesignSystem in Resources */ = {isa = PBXBuildFile; fileRef = 395111DB2A1FD657007363CA /* UIDesignSystem */; };
+		395111EB2A1FDB24007363CA /* NewsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395111E62A1FDB23007363CA /* NewsService.swift */; };
+		395111EC2A1FDB24007363CA /* NewsSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395111E72A1FDB23007363CA /* NewsSections.swift */; };
+		395111ED2A1FDB24007363CA /* Configurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395111E82A1FDB24007363CA /* Configurator.swift */; };
+		395111EE2A1FDB24007363CA /* Injected.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395111E92A1FDB24007363CA /* Injected.swift */; };
+		395111EF2A1FDB24007363CA /* ServiceLocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395111EA2A1FDB24007363CA /* ServiceLocator.swift */; };
 		39AF9C3E29E193FD00B1004F /* ArticleScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39AF9C3D29E193FD00B1004F /* ArticleScreen.swift */; };
 		39AF9C4029E1B5CC00B1004F /* CommentsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39AF9C3F29E1B5CC00B1004F /* CommentsScreen.swift */; };
 		39AF9C4629E2B46B00B1004F /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39AF9C4529E2B46B00B1004F /* FavoritesViewModel.swift */; };
@@ -17,13 +23,18 @@
 		39FA718229DAF29A000C8CED /* NewsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA718129DAF29A000C8CED /* NewsScreen.swift */; };
 		39FA718429DAF2A9000C8CED /* FavoritesScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA718329DAF2A9000C8CED /* FavoritesScreen.swift */; };
 		39FA718729DAF775000C8CED /* NewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA718629DAF775000C8CED /* NewsViewModel.swift */; };
-		39FA718A29DAF8B1000C8CED /* Networking in Frameworks */ = {isa = PBXBuildFile; productRef = 39FA718929DAF8B1000C8CED /* Networking */; };
 		39FA718D29DB11A1000C8CED /* UIDesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = 39FA718C29DB11A1000C8CED /* UIDesignSystem */; };
 		39FA718F29DC6AEA000C8CED /* ListArticleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA718E29DC6AEA000C8CED /* ListArticleCell.swift */; };
 		39FEFA7C29F547FA009D6206 /* Core in Frameworks */ = {isa = PBXBuildFile; productRef = 39FEFA7B29F547FA009D6206 /* Core */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		395111DB2A1FD657007363CA /* UIDesignSystem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = UIDesignSystem; path = Modules/UIDesignSystem; sourceTree = SOURCE_ROOT; };
+		395111E62A1FDB23007363CA /* NewsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsService.swift; sourceTree = "<group>"; };
+		395111E72A1FDB23007363CA /* NewsSections.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsSections.swift; sourceTree = "<group>"; };
+		395111E82A1FDB24007363CA /* Configurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configurator.swift; sourceTree = "<group>"; };
+		395111E92A1FDB24007363CA /* Injected.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Injected.swift; sourceTree = "<group>"; };
+		395111EA2A1FDB24007363CA /* ServiceLocator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceLocator.swift; sourceTree = "<group>"; };
 		39AF9C3D29E193FD00B1004F /* ArticleScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleScreen.swift; sourceTree = "<group>"; };
 		39AF9C3F29E1B5CC00B1004F /* CommentsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsScreen.swift; sourceTree = "<group>"; };
 		39AF9C4529E2B46B00B1004F /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
@@ -33,11 +44,9 @@
 		39FA717529DAEFD8000C8CED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		39FA717729DAEFD8000C8CED /* OtusAppSwiftUI002.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OtusAppSwiftUI002.entitlements; sourceTree = "<group>"; };
 		39FA717929DAEFD8000C8CED /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		39FA718029DAEFF9000C8CED /* Networking */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Networking; sourceTree = "<group>"; };
 		39FA718129DAF29A000C8CED /* NewsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsScreen.swift; sourceTree = "<group>"; };
 		39FA718329DAF2A9000C8CED /* FavoritesScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesScreen.swift; sourceTree = "<group>"; };
 		39FA718629DAF775000C8CED /* NewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModel.swift; sourceTree = "<group>"; };
-		39FA718B29DB118D000C8CED /* UIDesignSystem */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = UIDesignSystem; path = OtusAppSwiftUI002/UIDesignSystem; sourceTree = SOURCE_ROOT; };
 		39FA718E29DC6AEA000C8CED /* ListArticleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListArticleCell.swift; sourceTree = "<group>"; };
 		39FEFA7A29F547C1009D6206 /* Core */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Core; path = ../Modules/Core; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -47,7 +56,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				39FA718A29DAF8B1000C8CED /* Networking in Frameworks */,
 				39FA718D29DB11A1000C8CED /* UIDesignSystem in Frameworks */,
 				39FEFA7C29F547FA009D6206 /* Core in Frameworks */,
 			);
@@ -56,6 +64,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		395111E52A1FDB01007363CA /* ServiceLayer */ = {
+			isa = PBXGroup;
+			children = (
+				395111E82A1FDB24007363CA /* Configurator.swift */,
+				395111E92A1FDB24007363CA /* Injected.swift */,
+				395111E72A1FDB23007363CA /* NewsSections.swift */,
+				395111E62A1FDB23007363CA /* NewsService.swift */,
+				395111EA2A1FDB24007363CA /* ServiceLocator.swift */,
+			);
+			path = ServiceLayer;
+			sourceTree = "<group>";
+		};
 		39AF9C4429E2B45600B1004F /* Favourites */ = {
 			isa = PBXGroup;
 			children = (
@@ -85,9 +105,9 @@
 		39FA717029DAEFD7000C8CED /* OtusAppSwiftUI002 */ = {
 			isa = PBXGroup;
 			children = (
+				395111DB2A1FD657007363CA /* UIDesignSystem */,
 				39FEFA7A29F547C1009D6206 /* Core */,
-				39FA718B29DB118D000C8CED /* UIDesignSystem */,
-				39FA718029DAEFF9000C8CED /* Networking */,
+				395111E52A1FDB01007363CA /* ServiceLayer */,
 				39AF9C4429E2B45600B1004F /* Favourites */,
 				39FA718529DAF762000C8CED /* News */,
 				39FA717329DAEFD7000C8CED /* ContentView.swift */,
@@ -143,7 +163,6 @@
 			);
 			name = OtusAppSwiftUI002;
 			packageProductDependencies = (
-				39FA718929DAF8B1000C8CED /* Networking */,
 				39FA718C29DB11A1000C8CED /* UIDesignSystem */,
 				39FEFA7B29F547FA009D6206 /* Core */,
 			);
@@ -189,6 +208,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				395111DC2A1FD657007363CA /* UIDesignSystem in Resources */,
 				39FA717A29DAEFD8000C8CED /* Preview Assets.xcassets in Resources */,
 				39FA717629DAEFD8000C8CED /* Assets.xcassets in Resources */,
 			);
@@ -201,8 +221,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				395111EB2A1FDB24007363CA /* NewsService.swift in Sources */,
+				395111EC2A1FDB24007363CA /* NewsSections.swift in Sources */,
 				39FA718229DAF29A000C8CED /* NewsScreen.swift in Sources */,
 				39FA717429DAEFD7000C8CED /* ContentView.swift in Sources */,
+				395111EE2A1FDB24007363CA /* Injected.swift in Sources */,
+				395111ED2A1FDB24007363CA /* Configurator.swift in Sources */,
+				395111EF2A1FDB24007363CA /* ServiceLocator.swift in Sources */,
 				39AF9C4629E2B46B00B1004F /* FavoritesViewModel.swift in Sources */,
 				39FA718729DAF775000C8CED /* NewsViewModel.swift in Sources */,
 				39FA717229DAEFD7000C8CED /* OtusAppSwiftUI003.swift in Sources */,
@@ -429,10 +454,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		39FA718929DAF8B1000C8CED /* Networking */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Networking;
-		};
 		39FA718C29DB11A1000C8CED /* UIDesignSystem */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = UIDesignSystem;

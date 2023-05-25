@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import Networking
+import Core
 import UIDesignSystem
 
 struct ListArticleCell: View {

@@ -8,10 +8,11 @@
 import Foundation
 
 protocol ServiceLocatorProtocol {
-    func getService<T>() -> T?
+    func resolve<T>() -> T?
 }
-final public class ServiceLocator: ServiceLocatorProtocol {
-    static let shared = ServiceLocator()
+
+final class ServiceLocator: ServiceLocatorProtocol {
+    public static let shared = ServiceLocator()
     
     private lazy var services: [String: Any] = [:]
     
@@ -19,12 +20,12 @@ final public class ServiceLocator: ServiceLocatorProtocol {
         return (some is Any.Type) ? "\(some)" : "\(type(of: some))"
     }
     
-    func addService<T>(service: T) {
+    func register<T>(service: T) {
         let key = typeName(some: T.self)
         services[key] = service
     }
     
-    func getService<T>() -> T? {
+    func resolve<T>() -> T? {
         let key = typeName(some: T.self)
         return services[key] as? T
     }

@@ -8,15 +8,13 @@
 import Foundation
 
 @propertyWrapper
-public struct Injected<Service> {
+struct Injected<Service> {
     private var service: Service?
-    
-    public init() {}
     
     public var wrappedValue: Service? {
         mutating get {
             if service == nil {
-                service = ServiceLocator.shared.getService()
+                service = ServiceLocator.shared.resolve()
             }
             return service
         }
