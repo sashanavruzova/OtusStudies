@@ -2,7 +2,7 @@
 //  SuffixSequence.swift
 //  suffixArray
 //
-//  Created by Александра Наврузова on 29/06/2023.
+//  Created by Aleksandra Navruzova on 29/06/2023.
 //
 
 import Foundation

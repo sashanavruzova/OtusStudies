@@ -2,13 +2,16 @@
 //  TextFieldViewModel.swift
 //  suffixArray
 //
-//  Created by Александра Наврузова on 20/06/2023.
+//  Created by Aleksandra Navruzova on 20/06/2023.
 //
 
 import Foundation
 
 final class TextFieldViewModel: ObservableObject {
     @Published var suffixCountSorted = ""
+    @Published var searchHistory: [String] = .init()
+    
+    private let jobQueue = JobQueue(concurrency: 5)
     private var sortMode: SortMode = .alphabetically
     private var sortType: SortType = .asc
     private var suffixes = [SuffixInfo]()
@@ -26,33 +29,51 @@ final class TextFieldViewModel: ObservableObject {
     struct SuffixInfo {
         let word: String
         let count: Int
+        let time: UInt64
     }
     
-    func countSuffixesFrom(text: String) {
+    @MainActor
+    func countSuffixesFrom(text: String) async {
         let words = extractWords(from: text)
-        
-        let suffixCount = countSuffixes(in: words)
-        
-        suffixes = createSuffixInfo(from: suffixCount)
+
+        let startTime = DispatchTime.now().uptimeNanoseconds
+
+        suffixes = try! await withThrowingTaskGroup(of: [String: Int].self, returning: [SuffixInfo].self) { taskGroup in
+            for word in words {
+                taskGroup.addTask {
+                    let result = try! await self.jobQueue.submit(operation: { TextFieldViewModel.countSuffixes(word) })
+                    return result
+                }
+            }
+            
+            var result = [String: Int]()
+            for try await task in taskGroup {
+                result.merge(task) { $0 + $1 }
+            }
+            let endTime = DispatchTime.now().uptimeNanoseconds
+
+            return result.map { SuffixInfo(word: $0.key, count: $0.value, time: (endTime - startTime)) }
+        }
         
         sortSuffixes()
+    }
+    
+    func fillHistoryList(text: String) {
+        searchHistory.append(text)
     }
     
     private func extractWords(from text: String) -> [String] {
         return text.split(separator: " ").map { String($0) }
     }
     
-    private func countSuffixes(in words: [String]) -> [String: Int] {
-        return words
-            .flatMap { SuffixSequence(word: $0) }
-            .filter { $0.count >= 3 }
-            .reduce(into: [String: Int]()) { suffixCount, suffix in
-                suffixCount[suffix, default: 0] += 1
-            }
-    }
-    
-    private func createSuffixInfo(from suffixCount: [String: Int]) -> [SuffixInfo] {
-        return suffixCount.map { SuffixInfo(word: $0.key, count: $0.value) }
+    static func countSuffixes(_ text: String) -> [String: Int] {
+        let words = text.split(separator: " ").map { String($0) }
+                let suffixCount = Dictionary(words
+                    .flatMap { SuffixSequence(word: $0) }
+                    .filter { $0.count >= 3 }
+                    .map { ($0, 1) }, uniquingKeysWith: +)
+
+                return suffixCount
     }
     
     private func sortSuffixes() {
@@ -60,7 +81,7 @@ final class TextFieldViewModel: ObservableObject {
         case .alphabetically:
             sortSuffixes(type: sortType)
         case .top10:
-            fillTop10ThreeLettered()
+            sortTop10ThreeLettered()
         }
     }
     
@@ -75,7 +96,7 @@ final class TextFieldViewModel: ObservableObject {
         sortMode = .top10
         sortType = .desc
         
-        fillTop10ThreeLettered()
+        sortTop10ThreeLettered()
     }
     
     private func sortSuffixes(type: SortType) {
@@ -92,7 +113,7 @@ final class TextFieldViewModel: ObservableObject {
         }
     }
     
-    private func fillTop10ThreeLettered() {
+    private func sortTop10ThreeLettered() {
         let top10ThreeLetteredSuffixes = Array(suffixes
             .filter { $0.word.count == 3 }
             .sorted { info1, info2 in info1.count > info2.count }
@@ -101,10 +122,8 @@ final class TextFieldViewModel: ObservableObject {
     }
     
     private func combineSortedSuffixes(suffixes: [SuffixInfo]) {
-        let suffixCountSorted = suffixes.reduce(into: "") { res, info in
-                    let countString = info.count > 1 ? " – \(info.count)" : ""
-                    res += "\(info.word)\(countString)\n"
-                }
-                self.suffixCountSorted = suffixCountSorted
+        suffixCountSorted = suffixes.reduce("", { res, info in
+            info.count > 1 ? res + "\(info.word) – \(info.count) / \(info.time) ns\n" : res + "\(info.word) / \(info.time) ns\n"
+        })
     }
 }

@@ -13,11 +13,15 @@ struct TextFieldView: View {
     @State var inputWord: String = .init()
     
     var body: some View {
-        textField
-            .lineLimit(100)
-            .onSubmit {
-                submitAction()
-            }
+        VStack {
+            textField
+                .lineLimit(100)
+                .onSubmit {
+                    submitAction()
+                }
+            ResultsView()
+        }
+        .padding()
     }
     
     var textField: some View {
@@ -33,7 +37,10 @@ struct TextFieldView: View {
     }
     
     private func submitAction() {
-        viewModel.countSuffixesFrom(text: inputWord)
+        viewModel.fillHistoryList(text: inputWord)
+        Task {
+            await viewModel.countSuffixesFrom(text: inputWord)
+        }
     }
 }
 

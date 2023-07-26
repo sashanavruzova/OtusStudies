@@ -2,7 +2,7 @@
 //  ResultsViewModel.swift
 //  suffixArray
 //
-//  Created by Александра Наврузова on 20/06/2023.
+//  Created by Aleksandra Navruzova on 20/06/2023.
 //
 
 import SwiftUI

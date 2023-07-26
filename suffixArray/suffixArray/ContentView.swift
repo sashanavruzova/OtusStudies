@@ -8,12 +8,22 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var tabSelection = 0
+    
     var body: some View {
-        VStack {
+        TabView {
             TextFieldView(inputWord: .init())
-            ResultsView()
+                .tag(0)
+                .tabItem {
+                    Label("Search", systemImage: "magnifyingglass")
+                }
+            SearchHistoryView()
+                .tag(1)
+                .tabItem {
+                    Label("History", systemImage: "clock")
+                }
         }
-        .padding()
+        
     }
 }
 

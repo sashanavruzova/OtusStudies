@@ -2,7 +2,7 @@
 //  AlphabeticalSortView.swift
 //  suffixArray
 //
-//  Created by Александра Наврузова on 02/07/2023.
+//  Created by Aleksandra Navruzova on 02/07/2023.
 //
 
 import SwiftUI
