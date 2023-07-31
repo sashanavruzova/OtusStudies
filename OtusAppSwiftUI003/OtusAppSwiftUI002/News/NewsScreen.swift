@@ -47,6 +47,18 @@ struct NewsScreen: View {
             ListArticleCell(title: article.title ?? "", description: article.description ?? "", article: article)
         }
         .listStyle(PlainListStyle())
+        .refreshable {
+            switch headerVariant {
+            case 0:
+                newsVM.fetchNews(section: .world)
+            case 1:
+                newsVM.fetchNews(section: .israel)
+            case 2:
+                newsVM.fetchNews(section: .russia)
+            default:
+                break
+            }
+        }
     }
 }
 
