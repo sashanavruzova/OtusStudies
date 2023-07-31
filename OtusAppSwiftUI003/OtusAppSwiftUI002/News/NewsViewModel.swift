@@ -18,7 +18,7 @@ final class NewsViewModel: ObservableObject {
     }
     
     func getNews(section: NewsSections) {
-        if let articles = userDefaults.getCachedLaureates(section: section) {
+        if let articles = userDefaults.getCachedArticles(section: section) {
             self.articles = articles
             return
         }

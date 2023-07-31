@@ -23,7 +23,7 @@ final class UserDefaultsModel: ObservableObject {
         defaults.set(dataArticles, forKey: getKey(section: section))
     }
     
-    func getCachedLaureates(section: NewsSections) -> [Article]? {
+    func getCachedArticles(section: NewsSections) -> [Article]? {
         guard let data = UserDefaults.standard.object(forKey: getKey(section: section)) as? Data else { return nil }
         do {
             let cached = try JSONDecoder().decode(CachedData.self, from: data)
